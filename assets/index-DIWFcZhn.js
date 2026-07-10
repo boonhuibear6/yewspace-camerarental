@@ -181,8 +181,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: contain; object-position: bottom center;
   filter: drop-shadow(0 22px 34px rgba(29, 25, 54, 0.3));
-  mask-image: linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%);
+  /* no mask here: mask-image + filter on the webp stops the image painting
+     entirely in some renderers — the cutout's own edge reads fine unmasked */
 }
 .gear { position: absolute; display: block; z-index: 2; }
 .gear img {
@@ -192,11 +192,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .gear:hover img { transform: scale(1.08) rotate(-2deg); }
 .gear-tag {
-  position: absolute; left: 50%; bottom: -12px; transform: translateX(-50%) rotate(-2deg);
+  position: absolute; bottom: -12px; transform: rotate(-2deg);
   white-space: nowrap; background: var(--surface); border: 2px solid var(--ink);
   border-radius: 999px; padding: 2px 11px; font-size: 0.76rem; font-weight: 500;
   box-shadow: 2px 2px 0 var(--ink);
 }
+/* anchor tags toward the stage centre so they never clip the viewport */
+.g1 .gear-tag, .g3 .gear-tag { left: 0; }
+.g2 .gear-tag { right: 0; transform: rotate(2deg); }
 .g1 { top: 5%; left: -3%; width: 33%; animation: bob1 6s ease-in-out infinite; }
 .g2 { top: 38%; right: -3%; width: 25%; animation: bob2 7s ease-in-out infinite; }
 .g3 { bottom: 8%; left: 0; width: 29%; animation: bob3 6.4s ease-in-out infinite; }
@@ -488,7 +491,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .unit-story { color: var(--text-secondary); font-size: 0.95rem; margin: 4px 0 12px; }
 
 /* card proof quick-view */
-.proof-zoom { padding: 0; border: 0; background: none; cursor: zoom-in; display: block; }
+.proof-zoom { padding: 0; border: 0; background: none; cursor: zoom-in; display: block; flex-shrink: 0; }
 .proof-zoom:hover img { transform: scale(1.08); }
 .proof-zoom img { transition: transform 0.14s ease; }
 
@@ -552,12 +555,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .hamburger { display: inline-flex; }
   .mobile-menu { display: flex; flex-direction: column; background: var(--bg); border-bottom: 1px solid var(--border); padding: 10px 24px 18px; }
   .mobile-link { padding: 12px 0; text-align: left; font-size: 1.02rem; border-bottom: 1px solid var(--border); }
-  .hero { min-height: auto; padding: 20px 0 0; }
+  .hero { min-height: auto; padding: 16px 0 0; }
   .hero-inner { grid-template-columns: 1fr; gap: 0; }
-  .hero-stage { justify-self: center; max-width: 100%; width: 100%; height: 54vh; }
-  .hero-sub { font-size: 0.95rem; margin: 14px 0 18px; }
-  .hero-proofline { margin-top: 0; font-size: 0.74rem; }
+  .hero-stage { justify-self: center; max-width: 100%; width: 100%; height: 56vh; margin-top: -8px; }
+  .hero-sub { font-size: 0.95rem; margin: 12px 0 14px; }
+  .hero-proofline { margin-top: 0; font-size: 0.76rem; }
   .hero-wm { font-size: clamp(4rem, 21vw, 7rem); top: 6px; }
+  /* pull the gear in tight around the girl — nothing hangs past the edges */
+  .g1 { top: 7%; left: 2%; width: 27%; }
+  .g2 { top: 27%; right: 1%; width: 22%; }
+  .g3 { bottom: 12%; left: 2%; width: 25%; }
+  .gear-tag { font-size: 0.7rem; padding: 2px 9px; }
+  .hero-caption { right: 2%; bottom: 8px; font-size: 1.1rem; }
   .persona-strip { gap: 10px; }
   .persona-card { min-width: 110px; padding: 10px 8px 8px; }
   .persona-card img { height: 84px; }
@@ -570,10 +579,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .card-top h3 { font-size: 0.98rem; }
   .card-type { font-size: 0.74rem; }
   .card-hook { font-size: 1rem; }
-  .proof-strip img { width: 38px; height: 38px; }
-  .proof-note { font-size: 0.75rem; }
+  .card-media .sample-chip { top: auto; bottom: 8px; left: 8px; }
+  .proof-strip { flex-wrap: wrap; }
+  .proof-strip img { width: 44px; height: 44px; }
+  .proof-note { font-size: 0.75rem; flex-basis: 100%; margin: 2px 0 0; }
   .stick { font-size: 0.66rem; padding: 4px 8px; }
   .card-foot { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .card-foot .btn { font-size: 0.78rem; padding: 9px 14px; white-space: nowrap; }
   .bento { grid-template-columns: 1fr; }
   .b-wide { grid-column: span 1; }
   .b-tall { grid-row: span 1; }
