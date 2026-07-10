@@ -9,9 +9,53 @@
       name="description"
       content="Rent proven cameras in the Klang Valley. Real photos & footage from every unit, live availability, deposit-secured online booking — no DM ping-pong."
     />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📷</text></svg>" />
     <title>Yewspace Camera Rental — proven cameras, booked online</title>
-    <script type="module" crossorigin src="/yewspace-camerarental/assets/index-BthsPfEW.js"></script>
+
+    <!-- Social share cards (IG link-in-bio + WhatsApp are the whole funnel) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Yewspace Camera Rental" />
+    <meta property="og:title" content="Yewspace Camera Rental — proven cameras, booked online" />
+    <meta
+      property="og:description"
+      content="Rent creator cameras in the Klang Valley — real renter output on every listing, live availability, deposit-secured online booking."
+    />
+    <meta property="og:url" content="https://boonhuibear6.github.io/yewspace-camerarental/" />
+    <meta property="og:image" content="https://boonhuibear6.github.io/yewspace-camerarental/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Yewspace Camera Rental — proven cameras, booked online" />
+    <meta name="twitter:image" content="https://boonhuibear6.github.io/yewspace-camerarental/og.jpg" />
+
+    <!-- Fonts: direct link + preconnect (was CSS @import inside a JS-injected style tag) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=DM+Sans:wght@400;500&family=Caveat:wght@600&display=swap"
+    />
+
+    <!-- Hero portrait is the LCP element — fetch it before React renders -->
+    <link rel="preload" as="image" href="/yewspace-camerarental/cut-portrait.webp" type="image/webp" />
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📷</text></svg>" />
+
+    <!-- Analytics: paste a GA4 measurement id (G-XXXXXXX) to activate; trackEvent()
+         already pushes the full event taxonomy into dataLayer -->
+    <script>
+      window.dataLayer = window.dataLayer || []
+      window.__GA4_ID = '' // e.g. 'G-XXXXXXXXXX'
+      if (window.__GA4_ID) {
+        var s = document.createElement('script')
+        s.async = true
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.__GA4_ID
+        document.head.appendChild(s)
+        function gtag() { dataLayer.push(arguments) }
+        gtag('js', new Date())
+        gtag('config', window.__GA4_ID)
+      }
+    </script>
+    <script type="module" crossorigin src="/yewspace-camerarental/assets/index-CZiUVUBA.js"></script>
   </head>
   <body>
     <div id="root"></div>
