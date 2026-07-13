@@ -382,7 +382,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* final CTA — royal blue block with lavender watermark straddling the pink/blue seam */
 .cta-final { background: var(--blue); color: #fff; padding: 110px 0 88px; position: relative; overflow-x: clip; }
-.cta-wm { top: -0.5em; left: 50%; transform: translateX(-50%); font-size: clamp(3.6rem, 12vw, 10rem); opacity: 0.55; }
+.cta-wm {
+  top: -0.5em; left: 50%; transform: translateX(-50%);
+  font-size: clamp(3.6rem, 12vw, 10rem); opacity: 0.75;
+  -webkit-text-stroke: 1.5px rgba(29, 25, 54, 0.22);
+}
 .cta-inner { max-width: 620px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 18px; position: relative; z-index: 1; }
 .cta-final p { color: rgba(255, 255, 255, 0.75); }
 .cta-script { font-family: var(--script); font-size: clamp(1.5rem, 3vw, 2rem); color: #fff !important; margin-top: 4px; }
@@ -579,6 +583,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .g3 { bottom: 12%; left: 2%; width: 25%; }
   .gear-tag { font-size: 0.7rem; padding: 2px 9px; }
   .hero-caption { right: 2%; bottom: 8px; font-size: 1.1rem; }
+  .cta-wm { font-size: clamp(2.8rem, 16vw, 5.5rem); opacity: 0.95; -webkit-text-stroke: 1.5px rgba(29, 25, 54, 0.3); }
   .persona-strip { gap: 10px; }
   .persona-card { min-width: 110px; padding: 10px 8px 8px; }
   .persona-card img { height: 84px; }
