@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://boonhuibear6.github.io/yewspace-camerarental/sitemap.xml
